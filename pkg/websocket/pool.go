@@ -7,6 +7,12 @@ type Pool struct {
 	Broadcast  chan Message
 }
 
-func NewPool() {
+func NewPool() *Pool{
+	return &Pool{
+		Register: make(chan *Client),
+		Unregister: make(chan *Client),
+		Clients: make(map[*Client]bool),
+		Broadcast: make(chan Message),
+	}
 
 }
